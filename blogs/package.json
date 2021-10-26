@@ -4,13 +4,12 @@
   "main": "sass/mystyles.scss",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run css-watch",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
-    "css-watch": "npm run css-build -- --watch",
-    "start": "npm run css-watch"
+    "css-watch": "npm run css-build -- --watch"
   },
   "private": true,
   "dependencies": {
@@ -18,17 +17,20 @@
     "@angular/common": "~12.2.0",
     "@angular/compiler": "~12.2.0",
     "@angular/core": "~12.2.0",
+    "@angular/fire": "^7.1.1",
     "@angular/forms": "~12.2.0",
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "bulma": "^0.9.3",
+    "firebase": "^9.1.3",
+    "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.2.4",
+    "@angular-devkit/build-angular": "^12.2.11",
     "@angular/cli": "~12.2.4",
     "@angular/compiler-cli": "~12.2.0",
     "@types/jasmine": "~3.8.0",
