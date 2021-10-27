@@ -1,10 +1,45 @@
-<app-header></app-header>
-<br>
+<div class="columns is-mobile is-multiline is-centered">
+  <div class="column is-one-fourth has-text-centered">
+    <br>
+    <button class="button is-dark" routerLink="/login">
+        <mat-icon>login</mat-icon>
+        <span>Login</span>
+    </button>
+    <button class="button is-dark" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Log out</span>
+    </button>
+  </div>
+  <div class="column is-two-fourth">
+    <br>
+    <br><h1 class="title is-1 has-text-light has-text-centered" routerLink="/home"> titletitletitle </h1>
+    <br>
+    <p class="subtitle is-4 has-text-grey-light has-text-centered"> say whatever anonymously </p>
+    <br>
+  </div>
+  <div class="column is-one-fourth has-text-centered">
+    <br>
+    <button class="button is-dark" routerLink="/signup">
+        <mat-icon>person_add</mat-icon>
+        <span>Sign up</span>
+    </button>
+    <button class="button is-dark" routerLink="/forgot-password">
+        <mat-icon>help_outline</mat-icon>
+        <span>Forgot password</span>
+    </button>
+    <button class="button is-dark" routerLink="/verify-email">
+        <mat-icon>help_outline</mat-icon>
+        <span>Resend email verification</span>
+    </button>
+  </div>
+</div>
+
+
 <div class="columns is-centered">
   <div class="column is-half">
     <div class="field">
       <div class="control">
-        <input class="input has-text-white" type="text" placeholder="jessica LIU" style="border:1px solid #323437">
+        <input class="input has-text-white" type="text" placeholder="Search for posts" style="border:2px solid #202020">
       </div>
     </div>
   </div>
