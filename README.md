@@ -1,2 +1,2 @@
 # anonymous
-anonymous blog in written with angular
+anonymous blog written with angular
