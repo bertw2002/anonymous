@@ -1,12 +1,12 @@
+import { AnimationDriver } from '@angular/animations/browser';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-
-import { AngularFireAuth } from '@angular/fire/auth';
-
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthService {
 
@@ -15,8 +15,7 @@ export class AuthService {
     constructor(private router: Router, private afAuth: AngularFireAuth, private afs: AngularFirestore) {
         this.userLoggedIn = false;
 
-        //tracks if logged in or not.
-        this.afAuth.onAuthStateChanged((user) => {       // set up a subscription to always know the login status of the user
+        this.afAuth.onAuthStateChanged((user) => {              // set up a subscription to always know the login status of the user
             if (user) {
                 this.userLoggedIn = true;
             } else {
@@ -29,7 +28,7 @@ export class AuthService {
         return this.afAuth.signInWithEmailAndPassword(email, password)
             .then(() => {
                 console.log('Auth Service: loginUser: success');
-                // this.router.navigate(['/dashboard']);
+                this.router.navigate(['/home']);
             })
             .catch(error => {
                 console.log('Auth Service: login error...');
@@ -54,7 +53,7 @@ export class AuthService {
                         email_lower: emailLower
                     });
 
-                    result.user.sendEmailVerification();                    // immediately send the user a verification email
+                    //result.user.sendEmailVerification();                    // immediately send the user a verification email
             })
             .catch(error => {
                 console.log('Auth Service: signup error', error);
@@ -62,7 +61,7 @@ export class AuthService {
                     return { isValid: false, message: error.message };
             });
     }
-
+/*
     resetPassword(email: string): Promise<any> {
         return this.afAuth.sendPasswordResetEmail(email)
             .then(() => {
@@ -77,11 +76,12 @@ export class AuthService {
                     return error;
             });
     }
-
+    */
+/*
     async resendVerificationEmail() {                         // verification email is sent in the Sign Up function, but if you need to resend, call this function
         return (await this.afAuth.currentUser).sendEmailVerification()
             .then(() => {
-                // this.router.navigate(['home']);
+                this.router.navigate(['home']);
             })
             .catch(error => {
                 console.log('Auth Service: sendVerificationEmail error...');
@@ -91,7 +91,7 @@ export class AuthService {
                     return error;
             });
     }
-
+*/
     logoutUser(): Promise<void> {
         return this.afAuth.signOut()
             .then(() => {
@@ -118,6 +118,4 @@ export class AuthService {
     getCurrentUser() {
         return this.afAuth.currentUser;                                 // returns user object for logged-in users, otherwise returns null
     }
-
-
 }
