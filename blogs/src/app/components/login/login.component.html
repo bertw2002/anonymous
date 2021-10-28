@@ -12,13 +12,13 @@
             <div class="field">
               <label for="" class="label">Email</label>
               <div class="control">
-                <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
+                <input type="email" formControlName="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
               </div>
             </div>
             <div class="field">
               <label for="" class="label">Password</label>
               <div class="control">
-                <input type="password" placeholder="*******" class="input" required>
+                <input type="password" formControlName="password" placeholder="*******" class="input" required>
               </div>
             </div>
             <div *ngIf="firebaseErrorMessage != ''" class="error-style">
