@@ -8,7 +8,7 @@
       <div class="columns is-centered">
 
         <div class="column is-5-tablet is-4-desktop is-5-widescreen">
-          <form action="" class="box">
+          <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="" class="box">
             <div class="field">
               <label for="" class="label">Email</label>
               <div class="control">
@@ -21,6 +21,9 @@
                 <input type="password" placeholder="*******" class="input" required>
               </div>
             </div>
+            <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+                <span>{{ firebaseErrorMessage }}</span>
+            </div>
             <div class="field">
               <button class="button is-success">
                 Login
@@ -32,3 +35,32 @@
     </div>
   </div>
 </section>
+
+
+<!--
+
+<mat-card>
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input autocomplete="off" formControlName="email" type="email" matInput placeholder="Email">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input autocomplete="off" formControlName="password" type="password" matInput placeholder="Password">
+            </mat-form-field>
+        </p>
+        <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+            <span>{{ firebaseErrorMessage }}</span>
+        </div>
+
+        <button mat-raised-button color="primary">Login</button>
+    </form>
+</mat-card>
+-->
+<div class="progressIndicator" [style.display]="isProgressVisible ? 'inline' : 'none' ">
+    <mat-progress-spinner class=" example-margin" color="primary" mode="indeterminate"></mat-progress-spinner>
+</div>
