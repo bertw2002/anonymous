@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { AuthService } from '../services/auth.service'
+import { AuthService } from '../../services/auth.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
@@ -12,9 +12,12 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  goHome(){
+   this.router.navigate(['home']);
+  }
 }
