@@ -2,38 +2,45 @@
 <h1 class="title is-1 has-text-light has-text-centered" (click)="goHome()"> titletitletitle </h1>
 </section>
 
-<button mat-raised-button color="primary" routerLink="/home">
-    <mat-icon>home</mat-icon>
-    <span>Home</span>
-</button>
+<section class="section is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
 
-<mat-card class="form-card">
-    <form [formGroup]="signupForm" (ngSubmit)="signup()">
-        <p>
-            <mat-form-field appearance="outline">
-                <mat-label>Full Name</mat-label>
-                <input autocomplete="off" formControlName="displayName" type="text" matInput placeholder="Display Name">
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input formControlName="email" type="email" matInput placeholder="Email">
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input autocomplete="off" formControlName="password" type="password" matInput placeholder="Password">
-            </mat-form-field>
-        </p>
-        <div *ngIf="firebaseErrorMessage != ''" class="error-style">
-            <span>{{ firebaseErrorMessage }}</span>
+        <div class="column is-5-tablet is-4-desktop is-5-widescreen">
+          <form [formGroup]="signupForm" (ngSubmit)="signup()" type="" class="box">
+            <div class="field">
+              <label for="" class="label">Display Name</label>
+              <div class="control">
+                <input formControlName="displayName" type="text" placeholder="Name" class="input" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="" class="label">Email</label>
+              <div class="control">
+                <input formControlName="email" type="email" placeholder="email" class="input" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="" class="label">Password</label>
+              <div class="control">
+                <input formControlName="password" type="password" placeholder="*******" class="input" required>
+              </div>
+            </div>
+            <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+                <span> {{ firebaseErrorMessage }}</span>
+            </div>
+            <div class="field">
+              <button class="button is-success">
+                Register
+              </button>
+            </div>
+          </form>
         </div>
-
-        <button mat-raised-button color="primary">Signup</button>
-    </form>
-</mat-card>
+      </div>
+    </div>
+  </div>
+</section>
 
 <div class="progressIndicator" [style.display]="isProgressVisible ? 'inline' : 'none' ">
     <mat-progress-spinner class=" example-margin" color="primary" mode="indeterminate"></mat-progress-spinner>
