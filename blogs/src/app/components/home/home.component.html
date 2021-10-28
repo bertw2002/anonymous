@@ -1,11 +1,11 @@
 <div class="columns is-mobile is-multiline is-centered">
   <div class="column is-one-fourth has-text-centered">
     <br>
-    <button class="button is-dark" routerLink="/login">
+    <button *ngIf="!(afAuth.user | async)" class="button is-dark" routerLink="/login">
         <mat-icon>login</mat-icon>
         <span>Login</span>
     </button>
-    <button class="button is-dark" (click)="logout()">
+    <button *ngIf="(afAuth.user | async)" class="button is-dark" (click)="logout()">
         <mat-icon>logout</mat-icon>
         <span>Log out</span>
     </button>
