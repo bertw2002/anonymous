@@ -15,6 +15,7 @@ export class CreateBlogComponent implements OnInit {
   firebaseErrorMessage: string;
   blogForm: FormGroup;
   user: Observable<any>;
+  userString: string;
   display:string;
   content:string;
   constructor(public afAuth: AngularFireAuth, private router: Router, private authService: AuthService, private afs: AngularFirestore) {
@@ -23,17 +24,21 @@ export class CreateBlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.afAuth.authState.subscribe(user => {
-      console.log(user);
       if (user != null) {
         let emailLower = user.email!.toLowerCase();
+        this.userString = emailLower;
         this.user = this.afs.collection('users').doc(emailLower).valueChanges();
+        console.log(this.userString);
       }
     });
     this.blogForm = new FormGroup({
-        'email': new FormControl(this.user),
+
+      //error here. 
+        'email': new FormControl(this.userString),
         'display': new FormControl('', [Validators.required]),
         'content': new FormControl('', Validators.required)
     });
+    console.log(this.userString);
   }
 
   CreateBlog(){
