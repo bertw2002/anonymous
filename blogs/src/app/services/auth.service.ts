@@ -63,7 +63,7 @@ export class AuthService {
     }
     createBlog(record: any){
       let emailLower = record.email.toLowerCase();
-      this.afs.doc('/blogs/' + emailLower)                        // on a successful signup, create a document in 'users' collection with the new user's info
+      this.afs.doc('/blogs/')                        // on a successful signup, create a document in 'users' collection with the new user's info
           .set({
               email: emailLower,
               display: record.display,
