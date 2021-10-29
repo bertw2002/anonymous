@@ -61,6 +61,9 @@ export class AuthService {
                     return { isValid: false, message: error.message };
             });
     }
+    createBlog(Record: any){
+      return this.afs.collection('blog').add(Record);
+    }
 /*
     resetPassword(email: string): Promise<any> {
         return this.afAuth.sendPasswordResetEmail(email)

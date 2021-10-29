@@ -1,1 +1,14 @@
 <p>create-blog works!</p>
+<form (ngSubmit)="CreateBlog()">
+  <div class="field">
+    <input type="text" [(ngModel)]="display" placeholder="display name" />
+  </div>
+  <div class="field">
+    <input type="text" [(ngModel)]="content" placeholder="write what you want here" />
+  </div>
+  <div class="field">
+    <button class="button is-success">
+      Register
+    </button>
+  </div>
+</form>

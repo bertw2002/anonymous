@@ -58,6 +58,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { HomeComponent } from './components/home/home.component';
+import { CreateBlogComponent } from './components/create-blog/create-blog.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { HomeComponent } from './components/home/home.component';
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    HomeComponent
+    HomeComponent,
+    CreateBlogComponent
   ],
   imports: [
     BrowserModule,

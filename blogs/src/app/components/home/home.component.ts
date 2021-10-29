@@ -13,9 +13,18 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
+  user: Observable<any>;
+
   constructor(public afAuth: AngularFireAuth, private firestore: AngularFirestore, private router: Router) { }
 
   ngOnInit(): void {
+    this.afAuth.authState.subscribe(user => {
+      console.log(user);
+      if (user != null) {
+        let emailLower = user.email!.toLowerCase();
+        this.user = this.firestore.collection('users').doc(emailLower).valueChanges();
+      }
+    });
   }
   goHome(){
    this.router.navigate(['home']);
