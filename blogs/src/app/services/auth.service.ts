@@ -61,8 +61,14 @@ export class AuthService {
                     return { isValid: false, message: error.message };
             });
     }
-    createBlog(Record: any){
-      return this.afs.collection('blog').add(Record);
+    createBlog(record: any){
+      let emailLower = record.email.toLowerCase();
+      this.afs.doc('/blogs/' + emailLower)                        // on a successful signup, create a document in 'users' collection with the new user's info
+          .set({
+              email: emailLower,
+              display: record.display,
+              content: record.content
+          });
     }
 /*
     resetPassword(email: string): Promise<any> {

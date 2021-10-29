@@ -1,14 +1,23 @@
 <p>create-blog works!</p>
-<form (ngSubmit)="CreateBlog()">
+<form [formGroup]="blogForm" (ngSubmit)="CreateBlog()" type="" class="box">
   <div class="field">
-    <input type="text" [(ngModel)]="display" placeholder="display name" />
+    <label for="" class="label">Display Name</label>
+    <div class="control">
+      <input formControlName="display" type="text" placeholder="Name" class="input" required>
+    </div>
   </div>
   <div class="field">
-    <input type="text" [(ngModel)]="content" placeholder="write what you want here" />
+    <label for="" class="label"> Type anonymously</label>
+    <div class="control">
+      <input formControlName="content" type="text" placeholder="type here" class="input" required>
+    </div>
+  </div>
+  <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+      <span> {{ firebaseErrorMessage }}</span>
   </div>
   <div class="field">
     <button class="button is-success">
-      Register
+      submit
     </button>
   </div>
 </form>
